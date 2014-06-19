@@ -46,7 +46,7 @@ shinyUI(fluidPage(
                   tabPanel("App Information",
                            uiOutput("appinfo")),
                   tabPanel("Summary",
-                           tableOutput("summary")),
+                           dataTableOutput("summary")),
                   tabPanel("Plot Sales per Day",
                            plotOutput("hist")),
                   tabPanel("Costs",

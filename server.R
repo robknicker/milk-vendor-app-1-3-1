@@ -109,7 +109,7 @@ shinyServer(
     })
     
     summary <- reactive({
-      data.table(Summary=c("Mean per day",
+      data.frame(Summary=c("Mean per day",
                            "Standard deviation per day",
                            "Mean per expiration date",
                            "Standard deviation per expieration date",
@@ -152,7 +152,7 @@ shinyServer(
     output$hist <- renderPlot({
       hist(milk())
     })
-    output$summary <- renderTable({
+    output$summary <- renderDataTable({
       summary()
     })
     output$costs <- renderDataTable({
