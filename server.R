@@ -1,7 +1,5 @@
 # server.R
 library(shiny)
-install.packages("data.table")
-library(data.table)
 source("helperfunction.R")
 
 #add opportunity costs, costs from expired milk
