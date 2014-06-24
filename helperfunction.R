@@ -1,5 +1,5 @@
 all.costs <- function(meanexp, sdexp, 
-                      exp, opt, overcost, undercost) {
+                      exp, opt, overcost, undercost, numm) {
   
   probs <- c()
   allcosts<- matrix(nrow=2*opt,ncol=2*opt)
@@ -57,11 +57,13 @@ all.costs <- function(meanexp, sdexp,
   cfocosts <- sprintf("$ %6.2f", costsfromopt)
   
   costtable <- data.frame(Gallons.ordered=c(1:(2*opt)),
-                          Costs.difference.optimal.order=cfocosts,
+                          Difference.from.optimal=cfocosts,
                           Total.costs = ycosts,
                           Expired.milk.costs = yecosts,
                           Opportunity.costs = yocosts)
   
-  return(costtable)
+  costtable2 <- costtable[(1:(opt/(numm/2)))*numm,]
+  
+  return(costtable2)
   
 }

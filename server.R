@@ -71,7 +71,10 @@ shinyServer(
         as.numeric(input$num20),
         as.numeric(input$num21))  
     })
-    
+    sel2 = reactive({
+      as.numeric(input$select2)
+    })
+
     mean <- reactive({
       sum(milk())/length(milk())
     })
@@ -124,9 +127,10 @@ shinyServer(
     allcosts <- reactive({
       all.costs(meanexp = newmean(), sdexp = sqrt(newvar()),
                 exp = expi(), opt = opt(), 
-                overcost=overcost(), undercost=undercost())
+                overcost=overcost(), undercost=undercost(), numm = sel2())
     })
     
+
     costtable <- reactive({
       data.frame(Gallons.ordered=c(1:(2*opt())),
                  Yearly.revenue.loss=c(allcosts()))
